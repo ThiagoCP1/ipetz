@@ -1,7 +1,7 @@
 <template xmlns:b-row="http://www.w3.org/1999/html">
     <div>
         <b-row style="background-color: #FBCF3B">
-            <b-col class="align-self-center head">
+            <b-col class="align-self-center head text-left" style="margin-left: 48px">
                 <b-img class="img-header" src="../../img/logo.png" height="72" width="72"/>
                 <span class="fonte">
                   Ipetz
@@ -19,8 +19,8 @@
                 <span>Perfil</span>
             </b-col>
         </b-row>
-        <b-row>
-            <span class="sublinks">
+        <b-row class="align-items-center">
+            <span class="sublinks" style="margin-left: 133px">
                 Cachorro
             </span>
             <span class="sublinks">
@@ -82,6 +82,7 @@
         color: #7B7B7B;
         opacity: 1;
         padding-left: 40px;
+        padding: 15px;
 
     }
 
