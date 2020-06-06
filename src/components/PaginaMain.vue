@@ -1,6 +1,11 @@
 <template>
   <div>
     <Mainhead/>
+    <b-row>
+      <b-img src="../../img/banner.jpg">
+
+    </b-img>
+    </b-row>
   </div>
 </template>
 
