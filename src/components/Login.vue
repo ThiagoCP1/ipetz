@@ -24,16 +24,21 @@
             <label style="margin-top:40px">
               Nome:
             </label>
-            <b-form-input class="form-inputs">
+            <b-form-input v-model="loginUsuario" class="form-inputs">
 
             </b-form-input>
             <label style="margin-top:40px">
               Senha:
             </label>
-            <b-form-input class="form-inputs">
+            <b-form-input v-model="loginSenha" class="form-inputs">
 
             </b-form-input>
-            <b-button class="botao-entrar" variant="success">
+            <b-row v-if="usuarioIncorreto">
+              <b-col>
+                <b-alert style="max-width:350px;margin-top:20px" show variant="danger">Usuário ou Senha incorreta</b-alert>
+              </b-col>
+            </b-row>
+            <b-button @click="login" class="botao-entrar" variant="success">
               ENTRAR
             </b-button>
             <div>
@@ -147,7 +152,23 @@ export default {
       opcoesEstado:[{text:'Espirito Santo',value:1}],
       opcoesCidade:[{text:'Serra',value:1},{text:'Vitória',value:2}],
       estado:'',
-      cidade:''
+      cidade:'',
+      usuario: 'thiago',
+      senha: '123456',
+      tipologin:'1',
+      loginUsuario:'',
+      loginSenha:'',
+      usuarioIncorreto: false
+    }
+  },
+  methods:{
+    login(){
+      if(this.loginUsuario == this.usuario && this.loginSenha == this.senha){
+        this.$router.push('/dashboard')
+        this.usuarioIncorreto = false
+      }else{
+        this.usuarioIncorreto = true
+      }
     }
   }
 }

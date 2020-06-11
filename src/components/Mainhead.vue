@@ -14,9 +14,13 @@
                     </b-form-input>
                 </div>
             </b-col>
-            <b-col class="align-self-center">
+            <b-col class="align-self-center text-right" style="cursor:pointer">
                 <b-icon icon="person-fill" font-scale="2"></b-icon>
                 <span>Perfil</span>
+            </b-col>
+            <b-col class="align-self-center" @click="sair" style="cursor:pointer">
+                <b-icon icon="backspace-fill" font-scale="2"></b-icon>
+                <span>Sair</span>
             </b-col>
         </b-row>
         <b-row class="align-items-center">
@@ -53,6 +57,12 @@
         name: 'HelloWorld',
         props: {
             msg: String
+        },
+        methods:{
+            sair(){
+                this.$router.push('/')
+            }
+            
         }
     }
 </script>

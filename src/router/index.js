@@ -10,6 +10,11 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
+    component: Login
+  },
+  {
+    path: '/dashboard',
+    name: 'PaginaMain',
     component: Menu
   },
   {
