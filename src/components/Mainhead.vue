@@ -19,11 +19,11 @@
                 <span>Perfil</span>
             </b-col>
             <b-col class="align-self-center" @click="sair" style="cursor:pointer">
-                <b-icon icon="backspace-fill" font-scale="2"></b-icon>
-                <span>Sair</span>
+                <b-icon icon="box-arrow-right" font-scale="2"></b-icon>
+                <span style="margin-left:10px">Sair</span>
             </b-col>
         </b-row>
-        <b-row class="align-items-center">
+        <b-row class="align-items-center borda">
             <span class="sublinks" style="margin-left: 133px">
                 Cachorro
             </span>
@@ -95,5 +95,8 @@
         padding: 15px;
 
     }
+    .borda{
+    border: 1px solid #707070;
+  }
 
 </style>

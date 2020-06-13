@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../components/Login.vue'
 import Menu from '../components/PaginaMain.vue'
+import Loja from '../components/TelaLoja.vue'
+import Compra from '../components/CompraProduto.vue'
 
 Vue.use(VueRouter)
 
@@ -15,7 +17,12 @@ Vue.use(VueRouter)
   {
     path: '/dashboard',
     name: 'PaginaMain',
-    component: Menu
+    component: Compra
+  },
+  {
+    path: '/loja1',
+    name: 'loja',
+    component: Loja
   },
   {
     path: '/about',
