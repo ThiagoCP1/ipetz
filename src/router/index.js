@@ -5,6 +5,8 @@ import Login from '../components/Login.vue'
 import Menu from '../components/PaginaMain.vue'
 import Loja from '../components/TelaLoja.vue'
 import Compra from '../components/CompraProduto.vue'
+import Lojista from '../components/TelaLojista.vue'
+import Perfil from '../components/Perfil.vue'
 
 Vue.use(VueRouter)
 

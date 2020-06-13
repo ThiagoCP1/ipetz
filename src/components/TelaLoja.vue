@@ -12,7 +12,7 @@
         </span>
       </b-row>
       <b-row class="justify-content-center" >
-        <b-col v-for="teste in array" class="produtos text-center">
+        <b-col v-for="teste in array" :key="teste.id" class="produtos text-center">
           <b-img class="imagem-produtos" src="../../img/racao2.jpg" height="147" width="165"/>
           <b-row>
             <b-col class="descricao-produto">
@@ -48,7 +48,7 @@ export default {
   },
   data(){
     return{
-      array:[1,2,3,4,]
+      array:[{v:1,id:1},{v:2,id:2}]
     }
   }
 }
