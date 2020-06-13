@@ -16,7 +16,7 @@
             </b-col>
             <b-col class="align-self-center text-right" style="cursor:pointer">
                 <b-icon icon="person-fill" font-scale="2"></b-icon>
-                <span>Perfil</span>
+                <span>{{this.$store.state.login.name}}</span>
             </b-col>
             <b-col class="align-self-center" @click="sair" style="cursor:pointer">
                 <b-icon icon="box-arrow-right" font-scale="2"></b-icon>

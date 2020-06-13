@@ -22,7 +22,7 @@
           <b-col class="text-left" v-if="cadastro===false">
             <div style="margin-left:40px">
             <label style="margin-top:40px">
-              Nome:
+              Cpf:
             </label>
             <b-form-input v-model="loginUsuario" class="form-inputs">
 
@@ -30,7 +30,7 @@
             <label style="margin-top:40px">
               Senha:
             </label>
-            <b-form-input v-model="loginSenha" class="form-inputs">
+            <b-form-input @keyup.enter="login" type="password"  v-model="loginSenha" class="form-inputs">
 
             </b-form-input>
             <b-row v-if="usuarioIncorreto">
@@ -54,61 +54,61 @@
             <label style="margin-top:40px">
               Nome:
             </label>
-            <b-form-input class="form-inputs">
+            <b-form-input v-model="$store.state.cadastro.name" class="form-inputs">
 
             </b-form-input>
             
              <label style="margin-top:40px">
               Senha:
             </label>
-            <b-form-input class="form-inputs">
+            <b-form-input  class="form-inputs">
 
             </b-form-input>
             <label style="margin-top:40px">
               Confirmar senha:
             </label>
-            <b-form-input class="form-inputs">
+            <b-form-input v-model="$store.state.cadastro.password_hash" class="form-inputs">
 
             </b-form-input>
             <label style="margin-top:40px">
               Tipo de Cliente:
             </label>
             <b-form-group>
-              <b-form-radio-group :options="opcoesCadastro" v-model="tipoUsuario"/>
+              <b-form-radio-group v-model="$store.state.cadastro.provider" :options="opcoesCadastro" />
             </b-form-group>
             <b-form-group style="margin-top:40px" label="CPF" v-if="tipoUsuario===1">
-              <b-form-input class="form-inputs">
+              <b-form-input v-model="$store.state.cadastro.cpf_cnpj" class="form-inputs">
 
             </b-form-input>
             </b-form-group>
             <b-form-group style="margin-top:40px" label="CNPJ" v-if="tipoUsuario===2">
-              <b-form-input class="form-inputs">
+              <b-form-input v-model="$store.state.cadastro.cpf_cnpj" class="form-inputs">
 
             </b-form-input>
             </b-form-group>
              <label style="margin-top:40px">
               Telefone:
             </label>
-            <b-form-input class="form-inputs">
+            <b-form-input v-model="$store.state.cadastro.telefone" class="form-inputs">
 
             </b-form-input>
              <label style="margin-top:40px">
               Endereço:
             </label>
-            <b-form-input class="form-inputs">
+            <b-form-input v-model="$store.state.cadastro.endereco" class="form-inputs">
 
             </b-form-input>
             <b-form-group label="Estado:" class="form-inputs" style="margin-top:40px">
-            <b-form-select v-model="estado" :options="opcoesEstado">
+            <b-form-select v-model="$store.state.cadastro.estado" :options="opcoesEstado">
               
             </b-form-select>
             </b-form-group>
             <b-form-group label="Cidade:" class="form-inputs" style="margin-top:40px">
-            <b-form-select v-model="cidade" :options="estado.length==0?'':opcoesCidade">
+            <b-form-select v-model="$store.state.cadastro.cidade" :options="$store.state.cadastro.estado.length==0?'':opcoesCidade">
               
             </b-form-select>
             </b-form-group>
-            <b-button @click="cadastro=false" class="botao-entrar" variant="success">
+            <b-button @click="cadastroUsuario" class="botao-entrar" variant="success">
               CADASTRAR
             </b-button>
             <div class="criar-conta">
@@ -139,6 +139,7 @@
 
 
 <script>
+  import {mapMutations, mapGetters, mapActions, mapState} from 'vuex'
 export default {
   name: 'HelloWorld',
   props: {
@@ -149,26 +150,39 @@ export default {
       cadastro:false,
       opcoesCadastro:[{text:'Usuário',value:1},{text:'Lojista',value:2}],
       tipoUsuario: 1,
-      opcoesEstado:[{text:'Espirito Santo',value:1}],
-      opcoesCidade:[{text:'Serra',value:1},{text:'Vitória',value:2}],
+      opcoesEstado:[{text:'Espirito Santo',value:'Espirito Santo'}],
+      opcoesCidade:[{text:'Serra',value:'Serra'},{text:'Vitória',value:'Vitoria'}],
       estado:'',
       cidade:'',
-      usuario: 'thiago',
-      senha: '123456',
-      tipologin:'1',
       loginUsuario:'',
       loginSenha:'',
-      usuarioIncorreto: false
+      usuarioIncorreto: false,
     }
   },
   methods:{
+    ...mapActions({
+      teste: 'usuario/realizarLogin',
+    }),
     login(){
-      if(this.loginUsuario == this.usuario && this.loginSenha == this.senha){
-        this.$router.push('/dashboard')
-        this.usuarioIncorreto = false
-      }else{
-        this.usuarioIncorreto = true
-      }
+       this.$store.dispatch('realizarLogin',{cpf_cnpj:this.loginUsuario,password_hash:this.loginSenha}).then(resp=>{
+         console.log(this.$store.state.login)
+         if(this.$store.state.login.status==400){
+           this.usuarioIncorreto = true
+         }else {
+           this.$router.push('/dashboard')
+           this.usuarioIncorreto = false
+         }
+       })
+    },
+    cadastroUsuario(){
+      this.$store.dispatch('realizarCadastro').then(resp=>{
+        if(this.$store.state.cadastroSucesso===false){
+          console.log('deu error')
+        }else {
+          this.cadastro=false
+        }
+      })
+
     }
   }
 }
