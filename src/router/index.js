@@ -19,7 +19,7 @@ Vue.use(VueRouter)
   {
     path: '/dashboard',
     name: 'PaginaMain',
-    component: Compra
+    component: Menu
   },
   {
     path: '/loja1',

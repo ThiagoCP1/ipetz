@@ -11,6 +11,7 @@ export default new Vuex.Store({
         name:"",
         password_hash:"",
         provider:0,
+        nomeloja:"",
         cpf_cnpj:"",
         telefone:"",
         endereco:"",

@@ -7,7 +7,7 @@
 
     </b-img>
   </b-col>
-    
+
   <b-col class="text-left align-self-center">
     <h1 class="fonte">
       iPetz
@@ -43,7 +43,7 @@
             </b-button>
             <div>
               <h2 class="criar-conta">
-                Não tem uma conta? <a style="cursor:pointer" @click="cadastro=true"> Crie uma nova conta </a> 
+                Não tem uma conta? <a style="cursor:pointer" @click="cadastro=true"> Crie uma nova conta </a>
               </h2>
             </div>
             </div>
@@ -57,7 +57,7 @@
             <b-form-input v-model="$store.state.cadastro.name" class="form-inputs">
 
             </b-form-input>
-            
+
              <label style="margin-top:40px">
               Senha:
             </label>
@@ -76,12 +76,17 @@
             <b-form-group>
               <b-form-radio-group v-model="$store.state.cadastro.provider" :options="opcoesCadastro" />
             </b-form-group>
-            <b-form-group style="margin-top:40px" label="CPF" v-if="tipoUsuario===1">
+            <b-form-group style="margin-top:40px" label="CPF" v-if="$store.state.cadastro.provider===1">
               <b-form-input v-model="$store.state.cadastro.cpf_cnpj" class="form-inputs">
 
             </b-form-input>
             </b-form-group>
-            <b-form-group style="margin-top:40px" label="CNPJ" v-if="tipoUsuario===2">
+              <b-form-group style="margin-top:40px" label="Nome da loja:" v-if="$store.state.cadastro.provider===2">
+                <b-form-input v-model="$store.state.cadastro.nomeloja" class="form-inputs">
+
+                </b-form-input>
+              </b-form-group>
+            <b-form-group style="margin-top:40px" label="CNPJ" v-if="$store.state.cadastro.provider===2">
               <b-form-input v-model="$store.state.cadastro.cpf_cnpj" class="form-inputs">
 
             </b-form-input>
@@ -100,12 +105,12 @@
             </b-form-input>
             <b-form-group label="Estado:" class="form-inputs" style="margin-top:40px">
             <b-form-select v-model="$store.state.cadastro.estado" :options="opcoesEstado">
-              
+
             </b-form-select>
             </b-form-group>
             <b-form-group label="Cidade:" class="form-inputs" style="margin-top:40px">
             <b-form-select v-model="$store.state.cadastro.cidade" :options="$store.state.cadastro.estado.length==0?'':opcoesCidade">
-              
+
             </b-form-select>
             </b-form-group>
             <b-button @click="cadastroUsuario" class="botao-entrar" variant="success">
@@ -113,7 +118,7 @@
             </b-button>
             <div class="criar-conta">
               <h2 v-if="cadastro===false">
-                Não tem uma conta? <a style="cursor:pointer" @click="cadastro=true"> Crie uma nova conta </a> 
+                Não tem uma conta? <a style="cursor:pointer" @click="cadastro=true"> Crie uma nova conta </a>
               </h2>
             </div>
             </div>
