@@ -43,6 +43,11 @@ Vue.use(VueRouter)
       component: Produtos
     },
   {
+    path: '/Produtos',
+    name: 'Tag',
+    component: Produtos
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

@@ -22,7 +22,7 @@
           <b-col class="text-left" v-if="cadastro===false">
             <div style="margin-left:40px">
             <label style="margin-top:40px">
-              Cpf:
+              CPF/CNPJ:
             </label>
             <b-form-input v-model="loginUsuario" class="form-inputs">
 
