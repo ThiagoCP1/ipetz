@@ -22,10 +22,10 @@
             </b-col>
         </b-row>
         <b-row class="align-items-center borda">
-      <span @click="linkPedidos" class="sublinks" style="margin-left: 133px">
+      <span @click="linkPedidos" class="sublinks" style="margin-left: 133px;cursor:pointer">
                 Pedidos
             </span>
-            <span @click="linkProdutos" class="sublinks">
+            <span @click="linkProdutos" class="sublinks" style=";cursor:pointer">
                 Produtos
             </span>
             <span class="sublinks">

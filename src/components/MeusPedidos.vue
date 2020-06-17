@@ -1,11 +1,10 @@
 <template>
-  <div>
-      <MainLojista/>
-
-    <b-row>
+  <div >
+   <Mainhead/>
+   <b-row>
       <b-col class="pedidos-pendentes">
         <span>
-          Pedidos Pendentes
+          Seus Pedidos
         </span>
       </b-col>
     </b-row>
@@ -17,7 +16,7 @@
       </b-col>
       <b-col class="align-self-center">
         <span>
-          Nome
+          Produto
         </span>
       </b-col>
       <b-col class="align-self-center">
@@ -30,11 +29,6 @@
           Status
         </span>
       </b-col>
-      <b-col class="align-self-center">
-        <span>
-          
-        </span>
-      </b-col>
     </b-row>
     <b-row class="pedidos">
       <b-col class="align-self-center">
@@ -44,7 +38,7 @@
       </b-col>
       <b-col class="align-self-center">
         <span>
-          Thiago Cordeiro
+          Ração Pedigree
         </span>
       </b-col>
       <b-col class="align-self-center">
@@ -54,13 +48,8 @@
       </b-col>
       <b-col class="align-self-center">
         <span>
-          Novo
+          Entregue
         </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <b-button variant="success">
-          CONFIRMAR ENTREGA
-        </b-button>
       </b-col>
     </b-row>
     <b-row class="pedidos">
@@ -71,7 +60,7 @@
       </b-col>
       <b-col class="align-self-center">
         <span>
-          Lucas Mama Bola
+          Ração para Gatos
         </span>
       </b-col>
       <b-col class="align-self-center">
@@ -81,13 +70,8 @@
       </b-col>
       <b-col class="align-self-center">
         <span>
-          Novo
+          A caminho
         </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <b-button variant="success">
-          CONFIRMAR ENTREGA
-        </b-button>
       </b-col>
     </b-row>
     <b-row>
@@ -97,42 +81,24 @@
         </b-button>
       </b-col>
     </b-row>
-
-
-
-
-
   </div>
 </template>
 
 <script>
-    import  MainLojista from  './Mainheaderlojista'
+import Mainhead from '../components/Mainhead'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
-    components:{
-        MainLojista
-    },
-  data(){
-    return{
-
-    }
+  components: {
+    Mainhead
   },
-  methods:{
-    sair(){
-      this.$router.push('/')
-    }
-
-  }
-
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .pedidos-pendentes{
   margin-top: 20px;
   font-family: Arial, Helvetica, sans-serif;
@@ -160,6 +126,5 @@ export default {
   font-weight: bold;
   color: black;
 }
-
 
 </style>

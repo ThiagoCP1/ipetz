@@ -15,7 +15,7 @@
 
     </b-row >
     <b-row>
-      <b-col @click="comprarProduto(loja)" v-for=" loja in lojista" :key="loja.id" cols="1" style="margin-left: 150px;margin-top: 15px;cursor: pointer" class="text-left" >
+      <b-col @click="comprarProduto(loja)" v-for=" loja in lojista" :key="loja.id" cols="2" style="margin-left: 150px;margin-top: 15px;cursor: pointer" class="text-center" >
         <b-img width="150" height="150" :src="loja.fotoloja"></b-img>
         <b-row class="justify-content-center">
           <b-col  class="text-center">

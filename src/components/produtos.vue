@@ -79,7 +79,7 @@
         </b-row>
         <b-row v-if="cadastro==false">
             <b-col @click="comprarProduto" style="cursor:pointer" v-for="produtosLoja in produtosItem"
-                   :key="produtosItem.id" class="produtos text-center">
+                   :key="produtosLoja.id" class="produtos text-center">
                 <b-img class="imagem-produtos" :src="produtosLoja.foto_produto" height="147" width="165"/>
                 <b-row>
                     <b-col class="descricao-produto">
@@ -227,7 +227,8 @@ d
         margin-top: 20px;
         font-family: Arial, Helvetica, sans-serif;
         color: #3f3e3e;
-        font-size: 32px;
+        font-size: 36px;
+        font-weight: bold;
     }
 
     .descricaoLoja {

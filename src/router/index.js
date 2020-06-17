@@ -8,6 +8,8 @@ import Compra from '../components/CompraProduto.vue'
 import Lojista from '../components/TelaLojista.vue'
 import Perfil from '../components/Perfil.vue'
 import Produtos from '../components/produtos'
+import Modal from '../components/modal.vue'
+import Pedidos from '../components/MeusPedidos.vue'
 
 Vue.use(VueRouter)
 
@@ -47,6 +49,12 @@ Vue.use(VueRouter)
     name: 'Tag',
     component: Produtos
   },
+  {
+    path: '/Pedidos',
+    name: 'MeusPedidos',
+    component: Pedidos
+  },
+  
   {
     path: '/about',
     name: 'About',

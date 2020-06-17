@@ -1,44 +1,38 @@
 <template>
   <div>
     <Mainhead/>
-    <b-row>
+    <b-row v-for="produtoItem in produtoCompra" :key="produtoItem.id">
+
       <b-col class="imagem text-left">
-        <b-img class="img-header" src="../../img/racao3.jpg" height="300" width="300"/>
+        <b-img class="img-header" :src="produtoItem.foto_produto" height="300" width="300"/>
       </b-col>
       <b-col class="nome-produto align-self-center text-left">
         <p>
-          Ração para gatos Whiskas Sabor Boi Adultos 1Kg
+          {{produtoItem.nome_produto}}
         </p>
         <b-row class="descricao-produto align-self-center text-left">
+          <br>
           <span>
-          Marca: Whiskas<br>
-          <br>
-          <br>
-            - Indicada para gatos adultos<br>
-            - Formula Rica em nutrientes e minerais<br>
-            - Promove maior equilíbrio intestinal;<br>
-            - Reduz o volume e odor das fezes,<br>
-            - Disponível em embalagens de 15 kg e 20 kg.
+           {{produtoItem.descricao_produto}}
           </span>
         </b-row>
       </b-col>
       <b-col class="preco-produto align-self-center text-left">
         <span>
           Por<br>
-          R$139,90
+          R${{produtoItem.valor}}
 
         </span>
         <b-form-group style="margin-top:40px">
-      <b-form-radio v-model="selected" name="some-radios" value="A">10 Kg    R$120,90</b-form-radio>
-      <b-form-radio v-model="selected" name="some-radios" value="B">20 Kg    R$139,90</b-form-radio>
-    </b-form-group>
-    <b-button @click="comprar" class="botao-comprar" variant="success">
+          
+        </b-form-group>
+      <b-button @click="comprar" class="botao-comprar" variant="success">
       Comprar
-    </b-button>
+     </b-button>
       </b-col>
-    </b-row>
-    <b-row>
-      <b-col class="especificacoes align-self-center text-left">
+     </b-row>
+     <b-row>
+      <!-- <b-col class="especificacoes align-self-center text-left">
         <h1>
           Ração Whiskas: Especificações
         </h1>
@@ -57,13 +51,14 @@
           Disponível em embalagens de 15kg e 20kg<br>
 
         </span>
-      </b-col>
+      </b-col> -->
     </b-row>
   </div>
 </template>
 
 <script>
 import Mainhead from '../components/Mainhead'
+import API from "../lib/api/config/api";
 
 export default {
   name: 'HelloWorld',
@@ -73,6 +68,7 @@ export default {
   data(){
     return{
       compra:false,
+      produtoCompra:[]
     }
   },
   props: {
@@ -86,6 +82,15 @@ export default {
         compra =true
       }
     }
+  },
+  created() {
+    API.post('produtosbyid',{
+      id:this.$route.params.id
+    }).then(resp=>{
+      this.produtoCompra.push(resp.data)
+      console.log(resp.data)
+    })
+
   }
 }
 </script>
@@ -93,7 +98,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .imagem{
-  margin-top: 50px;
+  margin-top: 80px;
   margin-left: 100px;
   max-width:300px;
   max-height: 300px;
@@ -101,7 +106,7 @@ export default {
 .nome-produto{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
-  margin-top: 50px;
+  
   margin-left:30px;
 }
 .descricao-produto{
@@ -113,10 +118,10 @@ export default {
   font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 90px;
   border: 1px solid lightgray;
-  max-width:350px;
-  height: 300px;
+  max-width:335px;
+  height: 230px;
   margin-right: 170px;
 }
 .botao-comprar{

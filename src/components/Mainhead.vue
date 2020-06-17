@@ -14,6 +14,10 @@
                     </b-form-input>
                 </div>
             </b-col>
+            <b-col cols="2" class="align-self-center text-right" @click="meusPedidos" style="cursor:pointer">
+                <b-icon icon="bag-fill" font-scale="2"></b-icon>
+                <span>Meus Pedidos</span>
+            </b-col>
             <b-col class="align-self-center text-right" style="cursor:pointer">
                 <b-icon icon="person-fill" font-scale="2"></b-icon>
                 <span>{{this.$store.state.login.name}}</span>
@@ -25,19 +29,16 @@
         </b-row>
         <b-row class="align-items-center borda">
             <span class="sublinks" style="margin-left: 133px">
-                Cachorro
+                Ração
             </span>
             <span class="sublinks">
-                Gato
+                Acessórios
             </span>
             <span class="sublinks">
-                Roedores
+                Higiene e Beleza
             </span>
             <span class="sublinks">
-                Passáros
-            </span>
-            <span class="sublinks">
-                Peixes
+                Farmácia
             </span>
             <span class="sublinks">
                 Serviços
@@ -64,7 +65,11 @@
             },
             voltarPaginaPrincipal(){
                 this.$router.push('/dashboard')
+            },
+            meusPedidos(){
+                this.$router.push('/Pedidos')
             }
+
 
         }
     }
