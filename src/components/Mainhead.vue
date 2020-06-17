@@ -1,7 +1,7 @@
 <template xmlns:b-row="http://www.w3.org/1999/html">
     <div>
         <b-row style="background-color: #FBCF3B">
-            <b-col class="align-self-center head text-left" style="margin-left: 48px">
+            <b-col @click="voltarPaginaPrincipal" class="align-self-center head text-left" style="margin-left: 48px;cursor: pointer">
                 <b-img class="img-header" src="../../img/logo.png" height="72" width="72"/>
                 <span class="fonte">
                   Ipetz
@@ -61,8 +61,11 @@
         methods:{
             sair(){
                 this.$router.push('/')
+            },
+            voltarPaginaPrincipal(){
+                this.$router.push('/dashboard')
             }
-            
+
         }
     }
 </script>

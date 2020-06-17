@@ -3,40 +3,42 @@
     <Mainhead/>
     <b-row class="lojaNome">
       <span>
-        Petshop UCL
+        {{this.$store.state.loja}}
       </span>
       </b-row>
       <b-row class="descricaoLoja">
-        <span>
-          Rações e grande variedades para seu animal de estimação
-        </span>
+<!--        <span>-->
+<!--          Rações e grande variedades para seu animal de estimação-->
+<!--        </span>-->
       </b-row>
-      <b-row class="justify-content-center" >
-        <b-col v-for="teste in array" :key="teste.id" class="produtos text-center">
-          <b-img class="imagem-produtos" src="../../img/racao2.jpg" height="147" width="165"/>
+      <b-row  >
+        <b-col @click="comprarProduto" style="cursor:pointer" v-for="produtosLoja in produtosItem"
+               :key="produtosItem.id" class="produtos text-center">
+          <b-img class="imagem-produtos" :src="produtosLoja.foto_produto" height="147" width="165"/>
           <b-row>
             <b-col class="descricao-produto">
               <p>
-                Ração Royal Canin Mini Adult para Cães Adultos de Raças Pequenas com 10 Meses ou mais de Idade - 1 Kg
+                {{produtosLoja.descricao_produto}}
               </p>
             </b-col>
           </b-row>
           <b-row>
             <b-col class="preco">
               <p>
-                R$227,00
+                R${{produtosLoja.valor}}
               </p>
             </b-col>
           </b-row>
 
         </b-col>
-        
+
       </b-row>
   </div>
 </template>
 
 <script>
 import Mainhead from '../components/Mainhead'
+import API from "../lib/api/config/api";
 
 export default {
   name: 'HelloWorld',
@@ -48,8 +50,24 @@ export default {
   },
   data(){
     return{
-      array:[{v:1,id:1},{v:2,id:2}]
+      array:[{v:1,id:1},{v:2,id:2}],
+      produtosItem: null,
+
     }
+  },
+  methods:{
+    comprarProduto(){
+      this.$router.push('/comprar/1')
+    },
+
+  },
+  created() {
+    API.post('/produtoslojista', {
+      id_lojista: this.$route.params.id,
+    }).then(resp => {
+      this.produtosItem = resp.data
+    })
+
   }
 }
 </script>
@@ -73,7 +91,7 @@ export default {
     border: 1px solid #707070;
     margin-top: 200px;
     margin-right: 5px;
-    margin-left: 50px;
+    margin-left: 150px;
     max-width:261px;
     height: 500px;
     margin-bottom: 50px;
@@ -94,7 +112,7 @@ export default {
     font-weight:bold;
     font-size: 23px;
   }
-  
+
 
 
 

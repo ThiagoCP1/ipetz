@@ -174,7 +174,12 @@ export default {
          if(this.$store.state.login.status==400){
            this.usuarioIncorreto = true
          }else {
-           this.$router.push('/dashboard')
+           if(this.$store.state.login.provider==1){
+             this.$router.push('/dashboard')
+           }else {
+             this.$router.push('/gerenciarlojista')
+           }
+
            this.usuarioIncorreto = false
          }
        })

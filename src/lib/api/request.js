@@ -22,5 +22,16 @@ export default {
             cidade:payload.cidade
     })
     },
+    cadastrarProduto (payload) {
+        return API.post('/produtos',{
+            id_lojista:payload.id_lojista,
+            nome_produto:payload.nome_produto,
+            categoria:payload.categoria,
+            valor:payload.valor,
+            foto_produto:payload.foto_produto,
+            descricao_produto:payload.descricao_produto,
+
+        })
+    },
 
 }

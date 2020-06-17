@@ -18,11 +18,21 @@ export default new Vuex.Store({
         estado:"",
         cidade:""
   },
-    cadastroSucesso:''
+      cadastroProduto:{
+          id_lojista:0,
+          nome_produto:"",
+          categoria:"",
+          valor:"",
+          foto_produto:"",
+          descricao_produto:""
+      },
+    cadastroSucesso:'',
+      loja:''
   },
   mutations: {
     SUCCESS_LOGIN(state, payload) {
       state.login = payload
+        state.cadastroProduto.id_lojista=payload.id
     },
     SUCCESS_CADASTRO(state, payload) {
       state.cadastroSucesso = payload

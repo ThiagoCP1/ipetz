@@ -7,6 +7,7 @@ import Loja from '../components/TelaLoja.vue'
 import Compra from '../components/CompraProduto.vue'
 import Lojista from '../components/TelaLojista.vue'
 import Perfil from '../components/Perfil.vue'
+import Produtos from '../components/produtos'
 
 Vue.use(VueRouter)
 
@@ -21,11 +22,26 @@ Vue.use(VueRouter)
     name: 'PaginaMain',
     component: Menu
   },
-  {
-    path: '/loja1',
-    name: 'loja',
-    component: Loja
-  },
+    {
+      path: '/loja/:id',
+      name: 'loja',
+      component: Loja
+    },
+    {
+      path: '/comprar/:id',
+      name: 'loja',
+      component: Compra
+    },
+    {
+      path: '/gerenciarlojista',
+      name: 'gerenciarlojista',
+      component: Lojista
+    },
+    {
+      path: '/produtos',
+      name: 'produto',
+      component: Produtos
+    },
   {
     path: '/about',
     name: 'About',
