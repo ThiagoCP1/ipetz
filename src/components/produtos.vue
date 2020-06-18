@@ -4,16 +4,13 @@
 
         <b-row v-if="cadastro">
             <b-col style="background-color: #d3d3d3;margin-left: 10px" class="text-left">
-                <h1>
-                    Adicionar Produto
-                </h1>
+                <b-icon style="margin-left:30px" icon="plus-circle-fill" font-scale="2"></b-icon>
+                <span class="adicionar-produto">Adicionar Produtos</span>
             </b-col>
         </b-row>
         <b-row v-if="cadastro">
             <b-col class="text-left" cols="2">
-                <!--                <b-img src="../assets/images/racao.jpg" width="150" height="150">-->
-                <!--                </b-img>-->
-                <b-col style="height: 150px;width: 150px;margin-top: 30px" class="text-center align-self-center">
+                <b-col style="height: 150px;width: 150px;margin-top: 30px;margin-left:10px" class="text-center align-self-center">
                     <span v-if="foto.length==0">
                     Foto
                    </span>
@@ -21,7 +18,7 @@
                 </b-col>
 
                 <b-row>
-                    <div style="margin-left: 50px" class='input-wrapper'>
+                    <div style="margin-left: 50px;margin-top:20px" class='input-wrapper'>
                         <label for='input-file'>
                             Selecionar foto
                         </label>
@@ -120,7 +117,19 @@
                 foto: '',
                 options: [
                     {
-                        text: 'racao', value: 'racao'
+                        text: 'Ração', value: 'racao'
+                    },
+                    {
+                        text: 'Acessórios', value: 'acessorios'
+                    },
+                    {
+                        text: 'Higiene e Beleza', value: 'higiene e beleza'
+                    },
+                    {
+                        text: 'Farmácia', value: 'farmacia'
+                    },
+                    {
+                        text: 'Serviços', value: 'servicos'
                     }
                 ],
                 cadastro: false,
@@ -265,6 +274,12 @@ d
         color: green;
         font-weight: bold;
         font-size: 23px;
+    }
+    .adicionar-produto{
+        margin-left: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 26px;
+        margin-top: 10px;
     }
 
 </style>
