@@ -8,92 +8,108 @@
         </span>
       </b-col>
     </b-row>
-    <b-row class="pedidos-descricao">
-      <b-col class="align-self-center">
+
+
+      <b-row class="pedidos-descricao">
+        <b-col class="align-self-center">
         <span>
           Data
         </span>
-      </b-col>
-      <b-col class="align-self-center">
+        </b-col>
+        <b-col class="align-self-center">
         <span>
           Produto
         </span>
-      </b-col>
-      <b-col class="align-self-center">
+        </b-col>
+        <b-col class="align-self-center">
         <span>
           Valor
         </span>
-      </b-col>
-      <b-col class="align-self-center">
+        </b-col>
+        <b-col class="align-self-center">
         <span>
           Status
         </span>
-      </b-col>
-    </b-row>
-    <b-row class="pedidos">
-      <b-col class="align-self-center">
+        </b-col>
+      </b-row>
+      <b-row class="pedidos" v-for="pedidos in dataPedidos" :key="pedidos.id">
+        <b-col class="align-self-center">
         <span>
-          13/06/2020
+          {{pedidos.data_compra}}
         </span>
-      </b-col>
-      <b-col class="align-self-center">
+        </b-col>
+        <b-col class="align-self-center">
         <span>
-          Ração Pedigree
+          {{pedidos.nome_produto}}
         </span>
-      </b-col>
-      <b-col class="align-self-center">
+        </b-col>
+        <b-col class="align-self-center">
         <span>
-          R$26,30
+          R$ {{pedidos.valor}}
         </span>
-      </b-col>
-      <b-col class="align-self-center">
+        </b-col>
+        <b-col class="align-self-center">
         <span>
-          Entregue
+          {{verStatus(pedidos.status)}}
         </span>
-      </b-col>
-    </b-row>
-    <b-row class="pedidos">
-      <b-col class="align-self-center">
-        <span>
-          13/06/2020
-        </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <span>
-          Ração para Gatos
-        </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <span>
-          R$100,00
-        </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <span>
-          A caminho
-        </span>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col style="margin-top:30px">
-        <b-button class="botao" variant="success">
-          Atualizar
-        </b-button>
-      </b-col>
-    </b-row>
-  </div>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col style="margin-top:30px">
+          <b-button @click="atualizar" class="botao" variant="success">
+            Atualizar
+          </b-button>
+        </b-col>
+      </b-row>
+    </div>
+
+
 </template>
 
 <script>
+  import API from "../lib/api/config/api";
 import Mainhead from '../components/Mainhead'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
+  data(){
+    return{
+      dataPedidos:null
+    }
+  },
   components: {
     Mainhead
   },
+  methods:{
+    verStatus(stauts){
+      if(stauts==1){
+        return "A Caminho"
+      }
+      if(stauts==2){
+        return "Entregue"
+      }
+      if(stauts==3){
+        return "Cancelado"
+      }
+
+    },
+    atualizar(){
+      API.post('pedidosCliente',{
+        id_cliente:this.$store.state.login.id
+      }).then(resp=>{
+        this.dataPedidos=resp.data
+      })
+    }
+  },
+  created() {
+    API.post('pedidosCliente',{
+      id_cliente:this.$store.state.login.id
+    }).then(resp=>{
+      this.dataPedidos=resp.data
+    })
+  }
 }
 </script>
 

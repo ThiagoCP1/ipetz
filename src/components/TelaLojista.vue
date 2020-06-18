@@ -32,60 +32,33 @@
       </b-col>
       <b-col class="align-self-center">
         <span>
-          
+
         </span>
       </b-col>
     </b-row>
-    <b-row class="pedidos">
+    <b-row class="pedidos" v-for="pedidos in dataPedidos" :key="pedidos.id">
       <b-col class="align-self-center">
         <span>
-          13/06/2020
+          {{pedidos.data_compra}}
         </span>
       </b-col>
       <b-col class="align-self-center">
         <span>
-          Thiago Cordeiro
+          {{pedidos.nome_cliente}}
         </span>
       </b-col>
       <b-col class="align-self-center">
         <span>
-          R$26,30
+          R${{pedidos.valor}}
         </span>
       </b-col>
       <b-col class="align-self-center">
         <span>
-          Novo
+          {{verStatus(pedidos.status)}}
         </span>
       </b-col>
       <b-col class="align-self-center">
-        <b-button variant="success">
-          CONFIRMAR ENTREGA
-        </b-button>
-      </b-col>
-    </b-row>
-    <b-row class="pedidos">
-      <b-col class="align-self-center">
-        <span>
-          13/06/2020
-        </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <span>
-          Lucas Mama Bola
-        </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <span>
-          R$100,00
-        </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <span>
-          Novo
-        </span>
-      </b-col>
-      <b-col class="align-self-center">
-        <b-button variant="success">
+        <b-button @click="entregue(pedidos)" variant="success">
           CONFIRMAR ENTREGA
         </b-button>
       </b-col>
@@ -107,6 +80,7 @@
 
 <script>
     import  MainLojista from  './Mainheaderlojista'
+    import API from "../lib/api/config/api";
 export default {
   name: 'HelloWorld',
   props: {
@@ -117,14 +91,54 @@ export default {
     },
   data(){
     return{
-
+      dataPedidos:null
     }
   },
   methods:{
     sair(){
       this.$router.push('/')
+    },
+    verStatus(stauts){
+      if(stauts==1){
+        return "Pendente"
+      }
+      if(stauts==2){
+        return "Entregue"
+      }
+      if(stauts==3){
+        return "Cancelado"
+      }
+
+    },
+
+    entregue(pedidos){
+      API.put('pedidosLojista',{
+        id:pedidos.id,
+        status:2
+      }).then(resp=>{
+        API.post('pedidosLojista',{
+          id_lojista:this.$store.state.login.id
+        }).then(resp=>{
+          this.dataPedidos=resp.data
+        })
+      })
+    },
+    atualizar(){
+      API.post('pedidosLojista',{
+        id_lojista:this.$store.state.login.id
+      }).then(resp=>{
+        this.dataPedidos=resp.data
+      })
     }
 
+
+  },
+  created() {
+    API.post('pedidosLojista',{
+      id_lojista:this.$store.state.login.id
+    }).then(resp=>{
+      this.dataPedidos=resp.data
+    })
   }
 
 }
