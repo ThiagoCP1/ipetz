@@ -81,7 +81,7 @@
                 <b-row>
                     <b-col class="descricao-produto">
                         <p>
-                            {{produtosLoja.descricao_produto}}
+                            {{produtosLoja.nome_produto}}
                         </p>
                     </b-col>
                 </b-row>

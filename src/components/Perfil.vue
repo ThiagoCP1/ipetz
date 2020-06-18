@@ -2,7 +2,7 @@
     <div>
         <mainhead/>
         <b-row class=" justify-content-center">
-      <span style="font-size: 30px;font-family: sans-serif;margin-bottom: 20px;margin-top: 20px">
+      <span style="font-size: 30px;font-family: sans-serif;margin-bottom: 20px;margin-top: 20px;color: #FBCF3B;">
         Seus Dados
       </span>
         </b-row>
