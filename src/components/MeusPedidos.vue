@@ -35,7 +35,7 @@
       <b-row class="pedidos" v-for="pedidos in dataPedidos" :key="pedidos.id">
         <b-col class="align-self-center">
         <span>
-          {{pedidos.data_compra}}
+          {{$moment(pedidos.data_compra).format('DD/MM/YY HH:MM')}}
         </span>
         </b-col>
         <b-col class="align-self-center">

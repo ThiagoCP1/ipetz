@@ -6,10 +6,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+import Moment from 'moment';
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+
+Moment.locale('pt-BR')
+Vue.moment = Vue.prototype.$moment = Moment
+
 
 new Vue({
   router,

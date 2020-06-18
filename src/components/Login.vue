@@ -61,7 +61,7 @@
              <label style="margin-top:40px">
               Senha:
             </label>
-            <b-form-input  class="form-inputs">
+            <b-form-input v-model="senha" class="form-inputs">
 
             </b-form-input>
             <label style="margin-top:40px">
@@ -162,6 +162,7 @@ export default {
       loginUsuario:'',
       loginSenha:'',
       usuarioIncorreto: false,
+      senha:''
     }
   },
   methods:{
@@ -186,6 +187,16 @@ export default {
     },
     cadastroUsuario(){
       this.$store.dispatch('realizarCadastro').then(resp=>{
+         this.$store.state.cadastro.name="",
+          this.$store.state.cadastro.password_hash="",
+          this.$store.state.cadastro.provider=0,
+          this.$store.state.cadastro.nomeloja="",
+          this.$store.state.cadastro.cpf_cnpj="",
+          this.$store.state.cadastro.telefone="",
+          this.$store.state.cadastro.endereco="",
+          this.$store.state.cadastro.estado="",
+          this.$store.state.cadastro.cidade="",
+          this.senha=""
         if(this.$store.state.cadastroSucesso===false){
           console.log('deu error')
         }else {
