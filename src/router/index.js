@@ -54,7 +54,12 @@ Vue.use(VueRouter)
     name: 'MeusPedidos',
     component: Pedidos
   },
-  
+    {
+      path: '/perfil',
+      name: 'perfil',
+      component: Perfil
+    },
+
   {
     path: '/about',
     name: 'About',

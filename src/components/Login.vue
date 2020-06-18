@@ -171,7 +171,7 @@ export default {
     }),
     login(){
        this.$store.dispatch('realizarLogin',{cpf_cnpj:this.loginUsuario,password_hash:this.loginSenha}).then(resp=>{
-         console.log(this.$store.state.login)
+
          if(this.$store.state.login.status==400){
            this.usuarioIncorreto = true
          }else {
@@ -198,7 +198,7 @@ export default {
           this.$store.state.cadastro.cidade="",
           this.senha=""
         if(this.$store.state.cadastroSucesso===false){
-          console.log('deu error')
+
         }else {
           this.cadastro=false
         }

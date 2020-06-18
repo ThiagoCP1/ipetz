@@ -170,7 +170,7 @@
                 reader.onloadend = event => {
                     s3.save(event.currentTarget.result, fileName).then(res => {
                         s3.getUrl(fileName).then(url => {
-                            console.log(url)
+
                             this.$store.state.cadastroProduto.foto_produto = url
                             this.foto = url
                         });

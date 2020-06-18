@@ -47,7 +47,7 @@ export default new Vuex.Store({
     },
     async realizarCadastro(store,state) {
       await api.cadastrarUsuario(this.state.cadastro).then(response => {
-        console.log(response.data)
+
         store.commit('SUCCESS_CADASTRO', response.data)
       })
     },

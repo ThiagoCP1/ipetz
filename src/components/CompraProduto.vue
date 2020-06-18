@@ -146,7 +146,7 @@
                 // }else{
                 //   compra =true
                 // }
-              console.log(produtoItem)
+
                 API.post('pedidos', {
 
                     id_cliente: this.$store.state.login.id,
@@ -170,7 +170,7 @@
                 id: this.$route.params.id
             }).then(resp => {
                 this.produtoCompra.push(resp.data)
-                console.log(resp.data)
+
             })
 
         }

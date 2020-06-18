@@ -106,7 +106,7 @@ export default {
       reader.onloadend = event => {
         s3.save(event.currentTarget.result, fileName).then(res => {
           s3.getUrl(fileName).then(url => {
-            console.log(url)
+
             this.$bvModal
                     .msgBoxConfirm("Alterar foto de perfil?", {
                       title: "Atenção!",
